@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
+
 extern double DAXPY(double a, double x, double y);
 
 int main() {
@@ -15,9 +17,9 @@ int main() {
         return 1; 
     }
 
-    double x[n]; 
-    double y[n];
-    double z[n];
+    double *x = (double *)malloc(n * sizeof(double));
+    double *y = (double *)malloc(n * sizeof(double));
+    double *z = (double *)malloc(n * sizeof(double)); 
 	int i;
 	int j;
 	
@@ -28,25 +30,14 @@ int main() {
     }
     
 	i = 0;
+	time_t start, end;
+    start = time(NULL);
 	for(i=0; i < n;i++){
 		z[i] = DAXPY(a,x[i],y[i]);
 	}
-	
-	
+	end = time(NULL);
+	printf("Time taken to populate vector z is %.2f seconds",difftime(end, start));
     // Print the first array
-    printf("First array is: ");
-    for (j = 0; j < 10; j++) {
-        printf("%.2f ", x[j]);
-    }
-    printf("\n");
-    
-	j=0;
-	
-    // Print the second array
-    printf("Second array is: ");
-    for (j = 0; j < 10; j++) {
-        printf("%.2f ", y[j]);
-    }
     printf("\n");
 	
 	printf("Z array is: ");
@@ -55,4 +46,5 @@ int main() {
     }
     return 0;
 }
+
 
