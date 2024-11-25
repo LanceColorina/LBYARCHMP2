@@ -10,9 +10,13 @@ MP.exe
 
 
 
+TEST CASES - https://docs.google.com/document/d/1F12VF2DXUa9VVSk8pB65RLfIPQPjav55yMBcUfP_JCI/edit?usp=sharing
+
+1048576 - 2^20:
 
 
-1048576 - 2^20
-16777216 - 2^24
-268435456 - 2^28
-1073741824 - 2^30
+16777216 - 2^24:
+
+
+268435456 - 2^28:
+
