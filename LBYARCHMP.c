@@ -41,13 +41,14 @@ int main() {
     double *x = (double *)malloc(n * sizeof(double));
     double *y = (double *)malloc(n * sizeof(double));
     double *z = (double *)malloc(n * sizeof(double));
+    int i = 0;
     if (!x || !y || !z) {
         printf("Memory allocation failed. Exiting.\n");
         return 1;
     }
 
     // Populate arrays
-    for (int i = 0; i < n; i++) {
+    for (i = 0; i < n; i++) {
         x[i] = (double)(i + 1);         // x contains floats from 1 to n
         y[i] = x[i] + 10.00;           // y contains floats from 11 to (n + 10)
     }
@@ -55,14 +56,16 @@ int main() {
     // Time the kernel execution
     time_t start, end;
     start = time(NULL);
+    i = 0;
+    int j = 0;
     if (choice == 1) {
         // Use C implementation
-        for (int i = 0; i < n; i++) {
+        for (i = 0; i < n; i++) {
             z[i] = DAXPY_C(a, x[i], y[i]);
         }
     } else {
         // Use Assembly implementation
-        for (int i = 0; i < n; i++) {
+        for (i = 0; i < n; i++) {
             z[i] = DAXPY(a, x[i], y[i]);
         }
     }
@@ -73,7 +76,7 @@ int main() {
 
     // Print the first 10 elements of z
     printf("Z array is: ");
-    for (int j = 0; j < 10 && j < n; j++) {
+    for (j = 0; j < 10 && j < n; j++) {
         printf("%.2f ", z[j]);
     }
     printf("\n");
@@ -85,3 +88,4 @@ int main() {
 
     return 0;
 }
+
