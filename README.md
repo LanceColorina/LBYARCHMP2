@@ -2,9 +2,13 @@
 
 
 nasm -f win64 MP2asm.asm
+
 gcc -c LBYARCHMP.c -o LBYARCHMP.obj -m64
+
 gcc LBYARCHMP.obj MP2asm.obj -o MP.exe -m64
+
 MP.exe
+
 
 
 
